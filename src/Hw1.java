@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Hm1 {
+public class Hw1 {
     public static void main(String[] args) {
         //findTrFactNum();
         //PrintSimpleNums();
-        Calc();
+        //Calc();
     }
 
     //1.Вычислить n-ое треугольного число(сумма чисел от 1 до n), n! (произведение чисел от 1 до n)
