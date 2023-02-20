@@ -3,15 +3,18 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Scanner;
+import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Hw2 {
-    public static void main(String[] args) {
+    public static void main(String[] args)throws IOException {
 
-//        Buble();
-          Calc();
+//          Buble();
+            Calc();
 
     }
 
@@ -54,9 +57,13 @@ public class Hw2 {
 
 
 //2. К калькулятору из предыдущего дз добавить логирование.
-public static void Calc() {
+public static void Calc()throws IOException {
     Scanner sc = new Scanner(System.in);
-    Logger log = Logger.getLogger(Main.class.getName());
+    Logger log = Logger.getLogger(Hw2.class.getName());
+    FileHandler fHandler = new FileHandler("LogСalc.txt",true);
+    SimpleFormatter sFormatter = new SimpleFormatter();
+    fHandler.setFormatter(sFormatter);
+    log.addHandler(fHandler);
     System.out.println("Калькулятор может совершать операции только над двумя числами");
     System.out.println("Введите первое число");
     int fir =1; int sec =1; String sign = " ";
@@ -64,7 +71,8 @@ public static void Calc() {
         fir = sc.nextInt();
         log.info("первое число успешно обработано");
     }catch(InputMismatchException e){
-        log.info("ошиюка ввода, попробуйте еще раз");
+        e.printStackTrace();
+        log.log(Level.SEVERE,"ошибка ввода, попробуйте еще раз");
         Calc();
     }
     System.out.println("Введите второе число");
@@ -72,7 +80,8 @@ public static void Calc() {
         sec = sc.nextInt();
         log.info("второе число успешно обработано");
     }catch(InputMismatchException e){
-        log.info("ошибка ввода, попробуйте еще раз");
+        e.printStackTrace();
+        log.log(Level.SEVERE,"ошибка ввода, попробуйте еще раз");
         Calc();
     }
 
@@ -102,9 +111,10 @@ public static void Calc() {
             System.out.println("Такой операции не найдено, попробуйте заново");
             break;
     }
-    log.info("Программа успешно отработала");
+    log.log(Level.FINE,"Программа успешно отработала");
 
 }
 }
+
 
 

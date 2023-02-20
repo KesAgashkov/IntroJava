@@ -6,8 +6,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
 //import java.util.Arrays;
-
-
 public class program24 {
     public static void main(String[] args) {
 
